@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jogos em alta 2025</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Melhores jogos avaliados em 2025</h1>
+    <p>Clique em um jogo para saber mais sobre ele!</p>
+  </header>
+
+  <main class="game-gallery">
+    <div class="game-card" data-name="elden-ring">
+      <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg" alt="Elden Ring" />
+      <h3>Elden Ring</h3>
+    </div>
+
+    <div class="game-card" data-name="cyberpunk2077">
+      <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg" alt="Cyberpunk 2077" />
+      <h3>Cyberpunk 2077</h3>
+    </div>
+
+    <div class="game-card" data-name="god-of-war-ragnarok">
+      <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg
+      " alt="God of War Ragnarok" />
+      <h3>God of War Ragnarok</h3>
+    </div>
+
+    <div class="game-card" data-name="horizon-forbidden-west">
+      <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1240440/header.jpg" alt="Horizon Forbidden West" />
+      <h3>Horizon Forbidden West</h3>
+    </div>
+  </main>
+
+  <section class="game-info hidden">
+    <button class="close-btn" aria-label="Fechar">&times;</button>
+    <h2 id="game-title"></h2>
+    <p id="game-description"></p>
+  </section>
+
+  <script>
+    const games = {
+      "elden-ring": {
+        title: "Elden Ring",
+        description: "Um RPG de ação com mundo aberto, criado por FromSoftware e George R. R. Martin, oferecendo uma experiência épica, desafiadora e imersiva em um vasto universo sombrio."
+      },
+      "cyberpunk2077": {
+        title: "Cyberpunk 2077",
+        description: "Um RPG futurista ambientado na distópica Night City, onde você vive como V, um mercenário em busca de um implante único que é a chave para a imortalidade."
+      },
+      "god-of-war-ragnarok": {
+        title: "God of War Ragnarok",
+        description: "A continuação da jornada de Kratos e Atreus, explorando a mitologia nórdica, com batalhas intensas, narrativa profunda e visuais impressionantes."
+      },
+      "horizon-forbidden-west": {
+        title: "Horizon Forbidden West",
+        description: "Aventure-se em um mundo pós-apocalíptico repleto de máquinas gigantes e paisagens deslumbrantes, enquanto Aloy busca desvendar mistérios e proteger o futuro da humanidade."
+      }
+    };
+
+    const gallery = document.querySelector('.game-gallery');
+    const infoSection = document.querySelector('.game-info');
+    const gameTitle = document.getElementById('game-title');
+    const gameDesc = document.getElementById('game-description');
+    const closeBtn = document.querySelector('.close-btn');
+
+    gallery.addEventListener('click', e => {
+      const card = e.target.closest('.game-card');
+      if (!card) return;
+
+      const gameKey = card.getAttribute('data-name');
+      if (games[gameKey]) {
+        gameTitle.textContent = games[gameKey].title;
+        gameDesc.textContent = games[gameKey].description;
+        infoSection.classList.remove('hidden');
+        // Scroll suave para info aparecer na tela
+        infoSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      infoSection.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
