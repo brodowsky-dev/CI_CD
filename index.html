@@ -6,10 +6,12 @@
   <title>Jogos em alta 2025</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+<!-- Alterações visuais feitas por marianaps2025 em 2025-08 -->
 <body>
   <header>
     <h1>Melhores jogos avaliados em 2025</h1>
     <p>Clique em um jogo para saber mais sobre ele!</p>
+    <h2>Mariana esteve aqui</h2>
   </header>
 
   <main class="game-gallery">
@@ -73,12 +75,20 @@
 
       const gameKey = card.getAttribute('data-name');
       if (games[gameKey]) {
-        gameTitle.textContent = games[gameKey].title;
-        gameDesc.textContent = games[gameKey].description;
-        infoSection.classList.remove('hidden');
-        // Scroll suave para info aparecer na tela
-        infoSection.scrollIntoView({ behavior: 'smooth' });
-      }
+  gameTitle.textContent = games[gameKey].title;
+  gameDesc.textContent = games[gameKey].description;
+  infoSection.classList.remove('hidden');
+  infoSection.scrollIntoView({ behavior: 'smooth' });
+
+  // Remover seleção anterior
+  document.querySelectorAll('.game-card').forEach(card => {
+    card.classList.remove('selected');
+  });
+
+  // Adicionar destaque ao selecionado
+  card.classList.add('selected');
+}
+
     });
 
     closeBtn.addEventListener('click', () => {
