@@ -142,4 +142,14 @@
       padding: 20px;
     }
   }
+
+  /* Adição feita por marianaps2025 */
+.game-card.selected {
+  outline: 3px solid #ffcc00;
+  outline-offset: -6px;
+  box-shadow: 0 0 15px #ffcc00aa;
+}
+
+
+
   
